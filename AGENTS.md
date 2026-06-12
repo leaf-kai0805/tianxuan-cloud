@@ -30,7 +30,15 @@
 - CSS: BEM 风格类名，CSS 自定义属性管理主题色
 - JS: 原生 DOM 操作，模块化函数组织
 
+## 设计风格
+- 浅色专业B端管理后台风格
+- 主色：低饱和度深蓝 #2B579A
+- 背景：浅灰 #F5F7FA，卡片白色 #FFFFFF
+- 圆角：4-6px 小圆角
+- 扁平化设计，无发光/渐变效果
+- 详细设计规范见 DESIGN.md
+
 ## 注意事项
 - 这是一个纯静态项目，无后端 API
-- 外部 CDN 依赖：Google Fonts、Font Awesome
-- 中国大陆环境建议使用 Google Fonts `.cn` 域名
+- 外部 CDN 依赖：Google Fonts（.cn 域名）、Font Awesome
+- CSS 变量系统统一管理主题色，修改配色优先调整 `:root` 变量
