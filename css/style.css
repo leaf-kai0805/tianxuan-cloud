@@ -455,10 +455,7 @@ input, select {
 
 /* ===== 页面标题 ===== */
 .page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-lg);
 }
 
 .header-left {
@@ -664,21 +661,22 @@ input, select {
 
 .filter-left {
     display: flex;
-    gap: var(--space-lg);
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
 }
 
 .filter-group {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-xs);
+    align-items: center;
+    gap: var(--space-sm);
 }
 
 .filter-label {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 500;
-    color: var(--text-tertiary);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    white-space: nowrap;
 }
 
 .filter-select {

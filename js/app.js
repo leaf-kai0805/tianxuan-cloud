@@ -284,7 +284,6 @@ let filteredData = [...modelData];
 
 // ===== DOM元素 =====
 const tbody = document.getElementById('model-tbody');
-const totalCount = document.getElementById('total-count');
 const totalPagesSpan = document.getElementById('total-pages');
 const currentPageInput = document.getElementById('current-page');
 const prevPageBtn = document.getElementById('prev-page');
@@ -296,7 +295,6 @@ const toastContainer = document.getElementById('toast-container');
 
 // ===== 初始化 =====
 document.addEventListener('DOMContentLoaded', function() {
-    updateStats();
     renderTable();
     bindEvents();
     initNotificationSelects();
@@ -325,19 +323,6 @@ function initSidebar() {
             this.classList.add('active');
         });
     });
-}
-
-// ===== 更新统计卡片 =====
-function updateStats() {
-    const running = modelData.filter(m => m.status === 'running').length;
-    const stopped = modelData.filter(m => m.status === 'stopped').length;
-    const error = modelData.filter(m => m.status === 'error').length;
-    const totalInstances = modelData.reduce((sum, m) => sum + m.instances, 0);
-    
-    document.getElementById('stat-running').textContent = running;
-    document.getElementById('stat-stopped').textContent = stopped;
-    document.getElementById('stat-error').textContent = error;
-    document.getElementById('stat-total').textContent = totalInstances;
 }
 
 // ===== 渲染表格 =====
@@ -413,7 +398,6 @@ function renderTable() {
         tbody.appendChild(tr);
     });
     
-    totalCount.textContent = filteredData.length;
     totalPagesSpan.textContent = totalPages;
     currentPageInput.value = currentPage;
     currentPageInput.max = totalPages;
@@ -891,9 +875,8 @@ function confirmScale() {
         notifyFail: notifyFailConfig
     };
     
-    // 更新表格和统计
+    // 更新表格
     renderTable();
-    updateStats();
     
     closeScaleModal();
     showToast('success', `服务 ${currentModel.name} 扩缩容配置已更新`);
