@@ -300,7 +300,32 @@ document.addEventListener('DOMContentLoaded', function() {
     renderTable();
     bindEvents();
     initNotificationSelects();
+    initSidebar();
 });
+
+// ===== 侧边栏交互 =====
+function initSidebar() {
+    // 一级菜单展开/收起
+    document.querySelectorAll('.nav-group-header').forEach(function(header) {
+        header.addEventListener('click', function() {
+            var group = this.closest('.nav-group');
+            group.classList.toggle('expanded');
+        });
+    });
+
+    // 二级菜单选中
+    document.querySelectorAll('.nav-child-item').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            // 清除所有 active
+            document.querySelectorAll('.nav-child-item').forEach(function(el) {
+                el.classList.remove('active');
+            });
+            // 设置当前选中
+            this.classList.add('active');
+        });
+    });
+}
 
 // ===== 更新统计卡片 =====
 function updateStats() {
