@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天璇智能云 - AI服务中心</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 背景动效 -->
+    <div class="bg-effects">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- 顶部导航 -->
+        <header class="top-nav">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-diamond"></i>
+                </div>
+                <span class="brand-text">天璇<span class="brand-accent">·</span>智能云</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <i class="fa-solid fa-microchip"></i>
+                    <span>AI服务中心</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-cube"></i>
+                    <span>模型仓库</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-brain"></i>
+                    <span>推理服务</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-tasks"></i>
+                    <span>任务中心</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fa-solid fa-database"></i>
+                    <span>数据管理</span>
+                </a>
+            </nav>
+
+            <div class="nav-right">
+                <button class="icon-btn" title="搜索">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="icon-btn" title="通知">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+                <div class="user-menu">
+                    <div class="user-avatar">
+                        <span>叶</span>
+                    </div>
+                    <span class="user-name">叶飘</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- 主体布局 -->
+        <div class="main-wrapper">
+            <!-- 侧边栏 -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <span class="sidebar-title">导航菜单</span>
+                </div>
+                <nav class="sidebar-menu">
+                    <a href="#" class="menu-item active" data-page="service-management">
+                        <div class="menu-icon">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <div class="menu-text">
+                            <span class="menu-name">服务管理</span>
+                            <span class="menu-desc">模型实例管理</span>
+                        </div>
+                    </a>
+                    <a href="#" class="menu-item" data-page="model-repo">
+                        <div class="menu-icon">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <div class="menu-text">
+                            <span class="menu-name">模型仓库</span>
+                            <span class="menu-desc">模型资产管理</span>
+                        </div>
+                    </a>
+                    <a href="#" class="menu-item" data-page="inference-service">
+                        <div class="menu-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="menu-text">
+                            <span class="menu-name">推理服务</span>
+                            <span class="menu-desc">实时推理调用</span>
+                        </div>
+                    </a>
+                    <a href="#" class="menu-item" data-page="task-center">
+                        <div class="menu-icon">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <div class="menu-text">
+                            <span class="menu-name">任务中心</span>
+                            <span class="menu-desc">异步任务管理</span>
+                        </div>
+                    </a>
+                    <a href="#" class="menu-item" data-page="data-management">
+                        <div class="menu-icon">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <div class="menu-text">
+                            <span class="menu-name">数据管理</span>
+                            <span class="menu-desc">训练数据治理</span>
+                        </div>
+                    </a>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="system-status">
+                        <div class="status-dot running"></div>
+                        <span>系统正常</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 主内容区 -->
+            <main class="main-content">
+                <!-- 面包屑 -->
+                <div class="breadcrumb">
+                    <a href="#" class="breadcrumb-item">
+                        <i class="fa-solid fa-house"></i>
+                    </a>
+                    <span class="breadcrumb-sep">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+                    <span class="breadcrumb-item active">AI服务中心</span>
+                    <span class="breadcrumb-sep">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+                    <span class="breadcrumb-item current">服务管理</span>
+                </div>
+
+                <!-- 页面标题区 -->
+                <div class="page-header">
+                    <div class="header-left">
+                        <h1 class="page-title">
+                            <span class="title-accent">/</span>
+                            服务管理
+                        </h1>
+                        <p class="page-desc">管理AI模型部署实例，配置自动扩缩容策略</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn btn-ghost">
+                            <i class="fa-solid fa-rotate"></i>
+                            刷新数据
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fa-solid fa-plus"></i>
+                            新建服务
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 统计卡片 -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon running">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-running">6</span>
+                            <span class="stat-label">运行中</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            <span>12%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stopped">
+                            <i class="fa-solid fa-circle-pause"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-stopped">1</span>
+                            <span class="stat-label">已停止</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon error">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-error">1</span>
+                            <span class="stat-label">异常</span>
+                        </div>
+                        <div class="stat-trend down">
+                            <i class="fa-solid fa-arrow-down"></i>
+                            <span>8%</span>
+                        </div>
+                    </div>
+                    <div class="stat-card highlight">
+                        <div class="stat-icon total">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-total">29</span>
+                            <span class="stat-label">总实例数</span>
+                        </div>
+                        <div class="stat-gpu">
+                            <i class="fa-solid fa-microchip"></i>
+                            <span>8×A100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 筛选栏 -->
+                <div class="filter-bar">
+                    <div class="filter-left">
+                        <div class="filter-group">
+                            <label class="filter-label">服务状态</label>
+                            <select class="filter-select" id="filter-status">
+                                <option value="">全部</option>
+                                <option value="running">运行中</option>
+                                <option value="stopped">已停止</option>
+                                <option value="error">异常</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">模型类型</label>
+                            <select class="filter-select" id="filter-type">
+                                <option value="">全部</option>
+                                <option value="text">文本生成</option>
+                                <option value="multimodal">多模态</option>
+                                <option value="ocr">OCR识别</option>
+                                <option value="document">文档解析</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label class="filter-label">部署方式</label>
+                            <select class="filter-select" id="filter-deploy">
+                                <option value="">全部</option>
+                                <option value="online">在线部署</option>
+                                <option value="offline">离线部署</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-right">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" class="search-input" id="search-input" placeholder="搜索模型名称...">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 数据表格 -->
+                <div class="table-card">
+                    <div class="table-header">
+                        <div class="table-title">
+                            <span class="title-text">模型列表</span>
+                            <span class="table-count">共 <span id="total-count">8</span> 个服务</span>
+                        </div>
+                        <div class="table-actions">
+                            <button class="btn-icon" title="导出">
+                                <i class="fa-solid fa-download"></i>
+                            </button>
+                            <button class="btn-icon" title="批量操作">
+                                <i class="fa-solid fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-wrapper">
+                        <table id="model-table">
+                            <thead>
+                                <tr>
+                                    <th class="col-checkbox">
+                                        <input type="checkbox" id="select-all">
+                                    </th>
+                                    <th class="col-name">模型名称</th>
+                                    <th class="col-series">系列</th>
+                                    <th class="col-type">类型</th>
+                                    <th class="col-deploy">部署</th>
+                                    <th class="col-instances">实例</th>
+                                    <th class="col-status">状态</th>
+                                    <th class="col-actions">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="model-tbody">
+                                <!-- JS渲染 -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-footer">
+                        <div class="footer-left">
+                            <span class="selected-info">已选择 <span id="selected-count">0</span> 项</span>
+                        </div>
+                        <div class="pagination">
+                            <button class="page-btn" id="prev-page" disabled>
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <div class="page-info">
+                                <span>第</span>
+                                <input type="number" class="page-input" id="current-page" value="1" min="1">
+                                <span>页</span>
+                            </div>
+                            <span class="page-total">共 <span id="total-pages">1</span> 页</span>
+                            <button class="page-btn" id="next-page">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 详情弹窗 -->
+    <div class="modal" id="detail-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-panel">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-server"></i>
+                    <span>服务详情</span>
+                </div>
+                <button class="modal-close" onclick="closeDetailModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="detail-section">
+                    <h4 class="section-title">基本信息</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <label>模型名称</label>
+                            <span id="detail-name">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>模型版本</label>
+                            <span id="detail-version">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>模型系列</label>
+                            <span id="detail-series">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>模型类型</label>
+                            <span id="detail-type">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>部署方式</label>
+                            <span id="detail-deploy">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>创建时间</label>
+                            <span id="detail-create-time">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h4 class="section-title">运行状态</h4>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <label>实例数量</label>
+                            <span id="detail-instances">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <label>服务状态</label>
+                            <span id="detail-status">-</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <h4 class="section-title">资源配置</h4>
+                    <div class="resource-grid">
+                        <div class="resource-item">
+                            <i class="fa-solid fa-microchip"></i>
+                            <div class="resource-info">
+                                <span class="resource-label">CPU</span>
+                                <span class="resource-value" id="detail-cpu">-</span>
+                            </div>
+                        </div>
+                        <div class="resource-item">
+                            <i class="fa-solid fa-memory"></i>
+                            <div class="resource-info">
+                                <span class="resource-label">内存</span>
+                                <span class="resource-value" id="detail-memory">-</span>
+                            </div>
+                        </div>
+                        <div class="resource-item gpu">
+                            <i class="fa-solid fa-grip-lines"></i>
+                            <div class="resource-info">
+                                <span class="resource-label">GPU</span>
+                                <span class="resource-value" id="detail-gpu">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" onclick="closeDetailModal()">关闭</button>
+                <button class="btn btn-primary">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    编辑配置
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 扩缩容弹窗 -->
+    <div class="modal" id="scale-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-panel modal-lg">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <i class="fa-solid fa-arrows-up-down-left-right"></i>
+                    <span>扩缩容配置</span>
+                </div>
+                <button class="modal-close" onclick="closeScaleModal()">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- 基本信息 -->
+                <div class="scale-info">
+                    <div class="info-item">
+                        <span class="info-label">实例规格</span>
+                        <span class="info-value" id="instance-spec">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">节点数量</span>
+                        <span class="info-value" id="node-count">-</span>
+                    </div>
+                </div>
+
+                <!-- 手动调整 -->
+                <div class="config-section">
+                    <h4 class="section-title">
+                        <i class="fa-solid fa-hand-pointer"></i>
+                        手动调整
+                    </h4>
+                    <div class="manual-control">
+                        <button class="control-btn" onclick="decreaseInstances()">
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                        <div class="control-value">
+                            <input type="number" id="instance-count" value="1" min="1">
+                            <span class="value-unit">实例</span>
+                        </div>
+                        <button class="control-btn" onclick="increaseInstances()">
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 自动扩缩容 -->
+                <div class="config-section">
+                    <h4 class="section-title">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        自动扩缩容配置
+                    </h4>
+                    
+                    <div class="enable-toggle">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="enable-auto-scale" onchange="toggleAutoScalePanel()">
+                            <span class="toggle-slider"></span>
+                        </label>
+                        <span class="toggle-label">启用自动扩缩容</span>
+                    </div>
+
+                    <div class="auto-scale-panel" id="auto-scale-panel">
+                        <!-- 实例范围 -->
+                        <div class="config-block">
+                            <div class="block-header">
+                                <i class="fa-solid fa-layer-group"></i>
+                                <span>实例范围</span>
+                            </div>
+                            <div class="config-row">
+                                <div class="config-field">
+                                    <label>最小实例数</label>
+                                    <input type="number" class="config-input" id="min-instances" value="1" min="1">
+                                </div>
+                                <div class="config-field">
+                                    <label>最大实例数</label>
+                                    <input type="number" class="config-input" id="max-instances" value="10" min="1">
+                                </div>
+                                <div class="config-field">
+                                    <label>每次扩缩</label>
+                                    <input type="number" class="config-input" id="step-instances" value="1" min="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 触发条件 -->
+                        <div class="config-block">
+                            <div class="block-header">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>触发条件</span>
+                                <span class="block-hint">支持多条件组合</span>
+                            </div>
+                            
+                            <div class="condition-rules">
+                                <span class="rules-label">触发方式：</span>
+                                <select class="config-select" id="condition-operator">
+                                    <option value="or">任意一条满足 (OR)</option>
+                                    <option value="and">全部条件满足 (AND)</option>
+                                </select>
+                            </div>
+
+                            <div class="condition-list" id="condition-list">
+                                <!-- JS渲染 -->
+                            </div>
+
+                            <button class="btn-add-condition" onclick="addCondition()">
+                                <i class="fa-solid fa-plus"></i>
+                                添加条件
+                            </button>
+                        </div>
+
+                        <!-- 限制配置 -->
+                        <div class="config-block">
+                            <div class="block-header">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <span>限制配置</span>
+                            </div>
+                            <div class="config-row">
+                                <div class="config-field">
+                                    <label>扩容冷却时间</label>
+                                    <div class="input-group">
+                                        <input type="number" class="config-input" id="scale-up-cooldown" value="300" min="60">
+                                        <span class="input-suffix">秒</span>
+                                    </div>
+                                </div>
+                                <div class="config-field">
+                                    <label>缩容冷却时间</label>
+                                    <div class="input-group">
+                                        <input type="number" class="config-input" id="scale-down-cooldown" value="600" min="60">
+                                        <span class="input-suffix">秒</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 通知配置 -->
+                        <div class="config-block">
+                            <div class="block-header">
+                                <i class="fa-solid fa-bell"></i>
+                                <span>通知配置</span>
+                            </div>
+                            <div class="notification-list">
+                                <div class="notification-item">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="notify-scale-success" checked>
+                                        <span class="checkbox-custom"></span>
+                                        <span>扩容成功通知</span>
+                                    </label>
+                                    <div class="notify-targets" id="notify-success-targets">
+                                        <select class="config-select target-select" data-level="tenant">
+                                            <option value="">选择租户</option>
+                                            <option value="tenant1">租户A</option>
+                                            <option value="tenant2">租户B</option>
+                                        </select>
+                                        <select class="config-select target-select" data-level="app" disabled>
+                                            <option value="">先选租户</option>
+                                        </select>
+                                        <select class="config-select target-select" data-level="user" disabled>
+                                            <option value="">先选应用</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="notify-scale-fail" checked>
+                                        <span class="checkbox-custom"></span>
+                                        <span>扩容失败通知</span>
+                                    </label>
+                                    <div class="notify-targets" id="notify-fail-targets">
+                                        <select class="config-select target-select" data-level="tenant">
+                                            <option value="">选择租户</option>
+                                            <option value="tenant1">租户A</option>
+                                            <option value="tenant2">租户B</option>
+                                        </select>
+                                        <select class="config-select target-select" data-level="app" disabled>
+                                            <option value="">先选租户</option>
+                                        </select>
+                                        <select class="config-select target-select" data-level="user" disabled>
+                                            <option value="">先选应用</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-ghost" onclick="closeScaleModal()">取消</button>
+                <button class="btn btn-primary" onclick="confirmScale()">
+                    <i class="fa-solid fa-check"></i>
+                    确认配置
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 操作下拉菜单 -->
+    <div class="action-dropdown" id="action-dropdown">
+        <div class="dropdown-item" onclick="handleAction('scale')">
+            <i class="fa-solid fa-arrows-up-down-left-right"></i>
+            <span>扩缩容</span>
+        </div>
+        <div class="dropdown-item" onclick="handleAction('restart')">
+            <i class="fa-solid fa-rotate-right"></i>
+            <span>重启服务</span>
+        </div>
+        <div class="dropdown-item" onclick="handleAction('logs')">
+            <i class="fa-solid fa-file-lines"></i>
+            <span>查看日志</span>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item danger" onclick="handleAction('delete')">
+            <i class="fa-solid fa-trash"></i>
+            <span>删除服务</span>
+        </div>
+    </div>
+
+    <!-- Toast容器 -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

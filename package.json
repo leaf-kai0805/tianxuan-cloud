@@ -1,0 +1,13 @@
+{
+  "name": "tianxuan-cloud",
+  "version": "1.0.0",
+  "private": true,
+  "description": "天璇智能云 - AI服务中心",
+  "scripts": {
+    "dev": "npx server -l ${DEPLOY_RUN_PORT:-5000}",
+    "start": "npx server -l ${DEPLOY_RUN_PORT:-5000}"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}
