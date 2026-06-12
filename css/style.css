@@ -825,10 +825,6 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
-.col-checkbox {
-    width: 48px;
-}
-
 .col-name {
     min-width: 200px;
 }

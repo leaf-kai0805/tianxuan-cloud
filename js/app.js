@@ -348,9 +348,6 @@ function renderTable() {
     pageData.forEach(model => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td class="col-checkbox">
-                <input type="checkbox" class="row-checkbox" data-id="${model.id}">
-            </td>
             <td class="col-name">
                 <div class="model-name">
                     <div class="model-icon">
@@ -404,26 +401,10 @@ function renderTable() {
     
     prevPageBtn.disabled = currentPage === 1;
     nextPageBtn.disabled = currentPage >= totalPages;
-    
-    updateSelectedCount();
 }
 
 // ===== 绑定事件 =====
 function bindEvents() {
-    // 全选
-    document.getElementById('select-all').addEventListener('change', function(e) {
-        const checkboxes = document.querySelectorAll('.row-checkbox');
-        checkboxes.forEach(cb => cb.checked = e.target.checked);
-        updateSelectedCount();
-    });
-    
-    // 行选择
-    tbody.addEventListener('change', function(e) {
-        if (e.target.classList.contains('row-checkbox')) {
-            updateSelectedCount();
-        }
-    });
-    
     // 分页
     prevPageBtn.addEventListener('click', () => {
         if (currentPage > 1) {
@@ -475,12 +456,6 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(() => func.apply(this, args), wait);
     };
-}
-
-// ===== 更新选中数量 =====
-function updateSelectedCount() {
-    const selected = document.querySelectorAll('.row-checkbox:checked').length;
-    document.getElementById('selected-count').textContent = selected;
 }
 
 // ===== 应用筛选 =====
